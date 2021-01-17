@@ -1,0 +1,19 @@
+Option Explicit
+#If Win32 Then
+
+   Private Declare Function SendMessage Lib "user32" Alias _
+       "SendMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, _
+       ByVal wParam As Long, lParam As Long) As Long
+
+#Else
+
+   Private Declare Function SendMessage Lib "User" ( _
+       ByVal hwnd As Integer, ByVal wMsg As Integer, _
+       ByVal wParam As Integer, lParam As Any) As Long
+
+#End If
+
+Private Const WM_SETREDRAW = &HB
+Private msOldString As String ' module level global
+Private miStart As Integer    ' module level global
+Private miLength As Integer   ' module level global
